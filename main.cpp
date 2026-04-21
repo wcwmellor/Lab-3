@@ -19,10 +19,10 @@ UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
 bool alarmState = OFF;
 int numberOfIncorrectCodes = 0;
 
-bool gasalarm = false; //
-bool tempalarm = false; //
-bool continuousMonitoring = false; //
-int monitorCounter = 0; //
+bool gasalarm = false; 
+bool tempalarm = false; 
+bool continuousMonitoring = false; 
+int monitorCounter = 0; 
 
 void inputsInit();
 void outputsInit();
@@ -32,7 +32,7 @@ void alarmDeactivationUpdate();
 
 void uartTask();
 void availableCommands();
-void monitoringTaskUpdate(); //
+void monitoringTaskUpdate(); 
 
 int main()
 {
@@ -42,8 +42,8 @@ int main()
         alarmActivationUpdate();
         alarmDeactivationUpdate();
         uartTask();
-        monitoringTaskUpdate(); //
-        ThisThread::sleep_for(10ms);  //
+        monitoringTaskUpdate(); 
+        ThisThread::sleep_for(10ms);  
     }
 }
 
@@ -66,7 +66,7 @@ void outputsInit()
 
 void alarmActivationUpdate()
 {
-    if ( gasDetector || overTempDetector || gasalarm || tempalarm ) { //
+    if ( gasDetector || overTempDetector || gasalarm || tempalarm ) { 
         alarmState = ON;
     }
     alarmLed = alarmState;
@@ -81,8 +81,8 @@ void alarmDeactivationUpdate()
         if ( enterButton && !incorrectCodeLed && alarmState ) {
             if ( aButton && bButton && !cButton && !dButton ) {
                 alarmState = OFF;
-                gasalarm = false;  //
-                tempalarm = false; //
+                gasalarm = false;  
+                tempalarm = false; 
                 numberOfIncorrectCodes = 0;
             } else {
                 incorrectCodeLed = ON;
